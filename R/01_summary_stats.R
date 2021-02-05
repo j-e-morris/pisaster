@@ -14,3 +14,13 @@ head(pisaster_data)
 
 ## calculate mean counts across all years, sites, and plots
 mean_count <- mean(pisaster_data$count)
+
+## solution - pisaster_data is a matrix, count is a list with single value
+
+## load 'magrittr' to get pipe operator
+library(magrittr)
+
+mean_count = pisaster_data[,"count"] %>%
+  unlist() %>%
+  mean()
+mean_count  
